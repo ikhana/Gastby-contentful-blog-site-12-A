@@ -1,9 +1,3 @@
-const dotenv = require('dotenv');
-if (process.env.NODE_ENV !== 'productio'){
-  dotenv.config()
-}
-
-
 module.exports = {
   siteMetadata: {
     title: `Tries Beat Talent`,
@@ -18,8 +12,20 @@ module.exports = {
     },
   },
   plugins: [
-   
-    
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/blog`,
+        name: `blog`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/assets`,
+        name: `assets`,
+      },
+    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -74,7 +80,7 @@ module.exports = {
         resolve: `gatsby-source-contentful`,
         options: {
           spaceId: `3k36tu52f1ni`,
-          accessToken: process.env.ACCESS_TOKEN
+          accessToken: `vVhSuYDb-U7eoInEdlDYfVQjimuhc2o6HsW01dyeD5c`
         }
       },
 

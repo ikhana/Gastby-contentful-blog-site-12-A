@@ -26,7 +26,7 @@ const BlogPostTemplate = ({ data, location }) => {
           <p>{post.date}</p>
         </header>
         <section
-          dangerouslySetInnerHTML={{ __html: post.content.raw}}
+          dangerouslySetInnerHTML={{ __html: post.content.raw }}
           itemProp="articleBody"
         />
         <hr />
@@ -46,14 +46,14 @@ const BlogPostTemplate = ({ data, location }) => {
         >
           <li>
             {previous && (
-              <Link to={previous.slug} rel="prev">Hey There 
+              <Link to={previous.slug} rel="prev">Hey There
                 ← {previous.title}
               </Link>
             )}
           </li>
           <li>
             {next && (
-              <Link to={next.slug} rel="next"> 
+              <Link to={next.slug} rel="next">
                 {next.title} →
               </Link>
             )}
