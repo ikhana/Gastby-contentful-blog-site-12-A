@@ -1,5 +1,5 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from "react";
+import { Link, graphql } from "gatsby";
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -9,6 +9,7 @@ const BlogPostTemplate = ({ data, location }) => {
   const post = data.contentfulBlockchainlearning
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const { previous, next } = data
+ 
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -25,10 +26,12 @@ const BlogPostTemplate = ({ data, location }) => {
           <h1 itemProp="headline">{post.title}</h1>
           <p>{post.date}</p>
         </header>
-        <section
-          dangerouslySetInnerHTML={{ __html: post.content.raw }}
+          <section
+          
+          dangerouslySetInnerHTML= {{ __html: post.content.raw }}
           itemProp="articleBody"
         />
+      
         <hr />
         <footer>
           <Bio />

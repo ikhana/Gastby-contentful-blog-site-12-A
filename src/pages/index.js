@@ -29,10 +29,11 @@ const BlogIndex = ({ data, location }) => {
       <Bio />
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
-          const title = post.node.title || post.node.slug
+          
+          const title = post.node.title 
 
           return (
-            <li key={ post.node.slug}>
+            <li key={post.node.slug.toLowerCase().replace(/\s/g, '-') }>
               <article
                 className="post-list-item"
                 itemScope
@@ -40,7 +41,7 @@ const BlogIndex = ({ data, location }) => {
               >
                 <header>
                   <h2>
-                    <Link to={post.node.slug} itemProp="url">
+                    <Link to={post.node.slug.toLowerCase().replace(/\s/g, '-')} itemProp="url">
                       <span itemProp="headline">{title}</span>
                     </Link>
                   </h2>

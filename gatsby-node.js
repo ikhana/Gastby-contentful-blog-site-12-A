@@ -42,11 +42,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   if (posts.length > 0) {
     posts.forEach((post, index) => {
+      let slugifiedPath= post.node.slug.toLowerCase().replace(/\s/g, '-');
       const previousPostSlug = index === 0 ? null : posts[index - 1].id
       const $nextPostSlug = index === posts.length - 1 ? null : posts[index + 1].id
 
       createPage({
-        path: post.node.slug,
+        path: slugifiedPath,
         component: blogPost,
         context: {
           slug: post.node.slug,
