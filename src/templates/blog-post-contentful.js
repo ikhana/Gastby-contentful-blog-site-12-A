@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, graphql } from "gatsby";
+import Img from "gatsby-image";
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -13,15 +14,9 @@ const BlogPostTemplate = ({ data, location }) => {
 
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO
-        title={post.title}
-        description={post.subtitle}
-      />
-      <article
-        className="blog-post"
-        itemScope
-        itemType="http://schema.org/Article"
-      >
+      <SEO title={post.title} description={post.subtitle}/>
+      <Img fluid={post.image.fluid}/>
+      <article className="blog-post" itemScope  itemType="http://schema.org/Article">
         <header>
           <h1 itemProp="headline">{post.title}</h1>
           <p>{post.date}</p>
@@ -86,6 +81,11 @@ export const pageQuery = graphql`
     contentfulBlockchainlearning(slug: {eq: $slug}){
       title
       subtitle
+      image{
+        fluid{
+          ...GatsbyContentfulFluid
+        }
+      }
       content{
         raw
       }
